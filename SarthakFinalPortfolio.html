@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Sarthak Matte | Backend, Cloud & DevOps Portfolio</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ------------------------------------------------------------
+           PROFESSIONAL COLOR SYSTEM - STEEL TEAL & SLATE
+           Primary: #2B5B5E (Refined Teal)
+           Secondary: #4A7C7A (Muted Sage)
+           Accent: #C17A4A (Warm accent for subtle highlights - masculine)
+           Background: #F7F9F9 (Ultra-light cool tone)
+           Text: #2C3E3E, #5B6E6E, #8A9E9E
+        ------------------------------------------------------------ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #F7F9F9;
+            background-image: radial-gradient(circle at 0% 0%, rgba(43, 91, 94, 0.01) 0%, #F4F7F7 100%);
+            color: #2C3E3E;
+            font-family: 'Futura', 'Trebuchet MS', 'Century Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.55;
+            scroll-behavior: smooth;
+        }
+
+        /* refined scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #E4ECEA;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #9BB7B5;
+            border-radius: 10px;
+            transition: 0.2s;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2B5B5E;
+        }
+
+        /* Typography refinements */
+        h1, h2, h3, .logo, .nav-links a, .button, .badge, .cert-link {
+            letter-spacing: -0.2px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 6%;
+        }
+
+        /* ---------- Elevated Navigation Bar ---------- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02), 0 1px 0 rgba(0, 0, 0, 0.02);
+            z-index: 1000;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid #E2EAE8;
+            transition: all 0.2s ease;
+        }
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-weight: 750;
+            font-size: 1.55rem;
+            letter-spacing: -0.3px;
+            color: #1D3B3B;
+        }
+        .logo span {
+            color: #2B5B5E;
+            font-weight: 800;
+        }
+        .logo i {
+            color: #C17A4A;
+            margin-right: 8px;
+            font-size: 1.4rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links li a {
+            text-decoration: none;
+            font-weight: 550;
+            font-size: 0.9rem;
+            color: #4A6A6A;
+            transition: 0.2s;
+            padding: 0.4rem 0;
+            border-bottom: 2px solid transparent;
+            letter-spacing: 0.3px;
+        }
+        .nav-links li a:hover {
+            color: #2B5B5E;
+            border-bottom-color: #C17A4A;
+        }
+        @media (max-width: 720px) {
+            .nav-container { flex-direction: column; gap: 0.7rem; }
+            .nav-links { gap: 1.4rem; flex-wrap: wrap; justify-content: center; }
+            body { padding-top: 115px; }
+        }
+        body { padding-top: 82px; }
+
+        /* ----- Hero Section with refined spacing ----- */
+        #header {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: 1rem 0 2rem;
+        }
+        .hero-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2.5rem;
+        }
+        .hero-text { flex: 1.4; }
+        .hero-photo { flex: 0.8; text-align: center; }
+        .hero-photo img {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 56px;
+            box-shadow: 0 25px 35px -18px rgba(43, 91, 94, 0.2), 0 0 0 1px rgba(255,255,255,0.8);
+            border: 2px solid #FFFFFF;
+            background: #fff;
+            transition: transform 0.25s ease, box-shadow 0.3s;
+            object-fit: cover;
+            aspect-ratio: 1/1;
+        }
+        .hero-photo img:hover {
+            transform: scale(1.01);
+            box-shadow: 0 28px 40px -18px rgba(43, 91, 94, 0.28);
+        }
+        .header-text p {
+            font-family: 'Futura', monospace;
+            color: #C17A4A;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        .header-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #1A3535;
+        }
+        .header-text h1 span {
+            color: #2B5B5E;
+            border-bottom: 3px solid #C17A4A;
+            display: inline-block;
+        }
+        .badge-group {
+            display: flex;
+            gap: 0.85rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background: #EFF4F3;
+            border: 1px solid #DAE5E2;
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #2B5B5E;
+            transition: 0.2s;
+        }
+        .badge i { margin-right: 6px; font-size: 0.75rem; }
+        .badge:hover {
+            background: #FFFFFF;
+            border-color: #C17A4A;
+            transform: translateY(-2px);
+        }
+
+        /* ----- About Section (Elevated white card) ----- */
+        #about {
+            padding: 5rem 0;
+            background: #FFFFFF;
+            border-radius: 48px 48px 0 0;
+            margin-top: 0.5rem;
+            box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.02);
+        }
+        .about-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+        .about-col-1 { flex: 1; min-width: 220px; }
+        .about-col-1 img {
+            width: 100%;
+            max-width: 270px;
+            border-radius: 40px;
+            border: 1px solid #E2ECEA;
+            box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.05);
+            transition: 0.2s;
+        }
+        .about-col-2 { flex: 2; }
+        .sub-title {
+            font-size: 2.2rem;
+            font-weight: 750;
+            color: #1A3535;
+            margin-bottom: 1rem;
+            letter-spacing: -0.4px;
+        }
+        .sub-title i {
+            color: #C17A4A;
+            margin-right: 12px;
+            font-size: 2rem;
+        }
+        .about-col-2 h2 {
+            color: #2B5B5E;
+            font-weight: 550;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        .about-col-2 p {
+            color: #5B6E6E;
+            line-height: 1.6;
+        }
+        .tab-titles {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0 1.8rem;
+            border-bottom: 2px solid #E9F0EE;
+        }
+        .tab-links {
+            font-size: 0.95rem;
+            font-weight: 650;
+            cursor: pointer;
+            padding-bottom: 0.7rem;
+            transition: 0.2s;
+            color: #7A9797;
+            letter-spacing: 0.3px;
+        }
+        .tab-links.active-link {
+            color: #2B5B5E;
+            border-bottom: 2.5px solid #C17A4A;
+        }
+        .tab-contents { display: none; margin-top: 0.5rem; }
+        .tab-contents.active-tab {
+            display: block;
+            animation: fadeSlide 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(8px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .tab-contents ul li {
+            list-style: none;
+            margin-bottom: 1.3rem;
+            padding-left: 1rem;
+            border-left: 3px solid #C17A4A;
+        }
+        .tab-contents ul li span {
+            color: #2B5B5E;
+            font-weight: 750;
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        /* ----- Skillset Cards (Detailed & Polished) ----- */
+        #skillset {
+            padding: 5rem 0;
+            background: #FBFDFC;
+        }
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+            gap: 2rem;
+            margin-top: 2.8rem;
+        }
+        .services-list div {
+            background: #FFFFFF;
+            border-radius: 36px;
+            padding: 2rem 1.8rem;
+            transition: all 0.3s ease;
+            border: 1px solid #E5EFEC;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.02);
+        }
+        .services-list div:hover {
+            transform: translateY(-6px);
+            border-color: #C1D9D5;
+            box-shadow: 0 20px 30px -12px rgba(43, 91, 94, 0.08);
+            background: #FFFFFF;
+        }
+        .services-list div i {
+            font-size: 2.4rem;
+            color: #2B5B5E;
+            margin-bottom: 1.2rem;
+        }
+        .services-list div h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-weight: 680;
+            color: #1A3535;
+        }
+        .services-list div p {
+            color: #6A8888;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* ----- Projects & Certifications (Professional timeline style) ----- */
+        #projects {
+            padding: 5rem 0;
+            background: #FFFFFF;
+        }
+        .projects-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 2.5rem;
+        }
+        .project-card {
+            background: #FBFDFC;
+            border-radius: 28px;
+            padding: 1.3rem 2rem;
+            border-left: 5px solid #2B5B5E;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+        .project-card:hover {
+            background: #FFFFFF;
+            transform: translateX(5px);
+            box-shadow: 0 12px 22px -12px rgba(43, 91, 94, 0.1);
+        }
+        .project-card h3 {
+            font-size: 1.32rem;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            color: #1A3535;
+        }
+        .project-card h3 i { color: #C17A4A; font-size: 1.3rem; }
+        .project-card p {
+            margin-bottom: 0.8rem;
+            color: #618080;
+            font-size: 0.9rem;
+        }
+        .cert-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #F0F5F4;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #2B5B5E;
+            font-weight: 600;
+            font-size: 0.75rem;
+            transition: 0.2s;
+        }
+        .cert-link i { font-size: 0.75rem; }
+        .cert-link:hover {
+            background: #2B5B5E;
+            color: white;
+            letter-spacing: 0.3px;
+        }
+
+        /* ----- Contact with refined spacing ----- */
+        #contact {
+            padding: 5rem 0 2rem;
+            background: #FBFDFC;
+        }
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+        .contact-left { flex: 1; min-width: 240px; }
+        .contact-left p {
+            margin: 1.2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 1rem;
+            font-weight: 480;
+            color: #3E5E5E;
+        }
+        .contact-left p i {
+            color: #C17A4A;
+            width: 28px;
+            font-size: 1.2rem;
+        }
+        .social-icons a {
+            color: #93AEAE;
+            font-size: 1.7rem;
+            margin-right: 1.2rem;
+            transition: 0.2s;
+            display: inline-block;
+        }
+        .social-icons a:hover {
+            color: #2B5B5E;
+            transform: translateY(-3px);
+        }
+        .contact-right { flex: 1.5; }
+        form input, form textarea {
+            width: 100%;
+            background: #FFFFFF;
+            border: 1px solid #E0EBE8;
+            padding: 1rem 1.2rem;
+            margin: 0.7rem 0;
+            border-radius: 26px;
+            color: #1A3535;
+            font-size: 0.9rem;
+            font-family: 'Futura', 'Trebuchet MS', sans-serif;
+            outline: none;
+            transition: 0.2s;
+        }
+        form input:focus, form textarea:focus {
+            border-color: #2B5B5E;
+            box-shadow: 0 0 0 3px rgba(43, 91, 94, 0.08);
+        }
+        .button {
+            background: #2B5B5E;
+            border: none;
+            color: white;
+            font-weight: 650;
+            padding: 0.85rem 2rem;
+            border-radius: 48px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: 'Futura', sans-serif;
+            letter-spacing: 0.3px;
+        }
+        .button:hover {
+            background: #1D484A;
+            transform: scale(0.98);
+            box-shadow: 0 6px 14px rgba(43, 91, 94, 0.2);
+        }
+        .copyright {
+            text-align: center;
+            padding: 2rem 0 1.5rem;
+            margin-top: 2.5rem;
+            border-top: 1px solid #E2EAE8;
+            color: #95ADAD;
+            font-size: 0.75rem;
+            font-weight: 450;
+            letter-spacing: 0.5px;
+        }
+        .inline-code {
+            font-family: 'Futura', monospace;
+            background: #EFF4F3;
+            padding: 0.2rem 0.7rem;
+            border-radius: 18px;
+            font-size: 0.7rem;
+            color: #2B5B5E;
+        }
+
+        /* subtle animations and detail */
+        .project-card, .services-list div, .badge {
+            transition: all 0.25s ease;
+        }
+
+        /* responsive refinements */
+        @media (max-width: 800px) {
+            .hero-wrapper { flex-direction: column-reverse; text-align: center; }
+            .hero-text h1 { font-size: 2.6rem; }
+            .badge-group { justify-content: center; }
+            .about-wrapper { flex-direction: column; align-items: center; text-align: center; }
+            .tab-titles { justify-content: center; }
+            .tab-contents ul li { text-align: left; }
+            .sub-title { font-size: 1.9rem; }
+            .services-list { gap: 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 5%; }
+            .project-card { padding: 1rem 1.2rem; }
+        }
+        /* focus ring for accessibility */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid #C17A4A;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Professional Navigation -->
+<div class="navbar">
+    <div class="nav-container">
+        <div class="logo"><i class="fas fa-brain"></i> <span>Sarthak</span> Matte</div>
+        <ul class="nav-links">
+            <li><a href="#header">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skillset">Skillset</a></li>
+            <li><a href="#projects">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- Hero + Professional Photo Section -->
+<div id="header">
+    <div class="container">
+        <div class="hero-wrapper">
+            <div class="hero-text">
+                <div class="header-text">
+                    <p>Backend, Cloud & DevOps Engineer</p>
+                    <h1>Hi, I'm <span>Sarthak Matte</span><br> from India</h1>
+                    <div class="badge-group">
+                        <span class="badge"><i class="fab fa-aws"></i> AWS Certified</span>
+                        <span class="badge"><i class="fas fa-code"></i> C++ / Python</span>
+                        <span class="badge"><i class="fas fa-infinity"></i> CI/CD Pipelines</span>
+                        <span class="badge"><i class="fas fa-shield-alt"></i> Security First</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-photo">
+                <!-- Replace src with your Google Drive direct image link -->
+                <img id="profilePhoto" src="https://res.cloudinary.com/dv5m52k9l/image/upload/v1779436788/IMG_0810_jqlcwn.jpg" alt="Sarthak Matte">
+                <p style="font-size: 0.65rem; margin-top: 12px; color:#7A9999;"><i class="fas fa-link"></i> Profile</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- About Section: Professional Details -->
+<div id="about">
+    <div class="container">
+        <div class="about-wrapper">
+            <div class="about-col-1">
+                <img src="https://res.cloudinary.com/dv5m52k9l/image/upload/v1779436806/b2bea308-317a-40d4-9d48-a6824d2aa8de_sqajg6.jpg" alt="Sarthak Matte">
+            </div>
+            <div class="about-col-2">
+                <h1 class="sub-title"><i class="fas fa-address-card"></i> About Me</h1>
+                <h2>Computer Engineer — Backend, Cloud & DevOps Domain</h2>
+                <p>I'm Sarthak Matte, based in Maharashtra, India. Currently pursuing B.Tech in Computer Science at MIT Academy of Engineering, Pune. I architect cloud-native solutions and build robust backend systems. My technical philosophy combines automation, observability, and security. With a strong foundation in AWS, C++, and modern web technologies, I deliver production-ready infrastructure and applications.</p>
+                <div class="tab-titles">
+                    <div class="tab-links active-link" data-tab="skills">📄 Core Competencies</div>
+                    <div class="tab-links" data-tab="experience">🚀 Professional Journey</div>
+                    <div class="tab-links" data-tab="education">🎓 Academic Background</div>
+                </div>
+                <div id="skills" class="tab-contents active-tab">
+                    <ul>
+                        <li><span>◉ Cloud & Infrastructure (AWS)</span><br>AWS Foundations, Cloud Architecting, IAM, EC2, S3, Serverless, Infrastructure as Code (IaC) mindset.</li>
+                        <li><span>◉ DevOps & Automation</span><br>CI/CD pipelines (GitHub Actions), containerization basics, Linux administration, version control (Git).</li>
+                        <li><span>◉ Full-Stack & Programming</span><br>HTML5, CSS3, JavaScript, Python, C++ (Data structures, OOP), API integration, responsive design.</li>
+                    </ul>
+                </div>
+                <div id="experience" class="tab-contents">
+                    <ul>
+                        <li><span>◉ 2022 – Present</span><br>AWS Academy Graduate (Cloud Foundations & Architecting). Designed secure, scalable cloud architectures for academic projects.</li>
+                        <li><span>◉ Research & Development</span><br>Millet Project: full-stack digital documentation & data presentation. Cybersecurity virtual labs (Cisco).</li>
+                        <li><span>◉ Open Source & Continuous Learning</span><br>Exploring Kubernetes, Terraform, and advanced DevOps patterns. Building automation scripts in Python.</li>
+                    </ul>
+                </div>
+                <div id="education" class="tab-contents">
+                    <ul>
+                        <li><span>◉ 2022 – 2026</span><br>MIT Academy of Engineering, Pune — B.Tech Computer Engineering (CGPA: 8.6+ / Third Year)</li>
+                        <li><span>◉ 2020 – 2022</span><br>Janata Mahavidyalaya, Chandrapur (HSC: 81.33%)</li>
+                        <li><span>◉ 2007 – 2020</span><br>Mount Carmel Convent High School, Chandrapur (AISSC: 93.2%)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Technical Skillset (Detailed Cards) -->
+<div id="skillset">
+    <div class="container">
+        <h1 class="sub-title"><i class="fas fa-cogs"></i> Technical Expertise</h1>
+        <div class="services-list">
+            <div>
+                <i class="fas fa-server"></i>
+                <h2>Backend FastAPI</h2>
+                <p>High-performance API development with Python FastAPI, async endpoints, dependency injection, and automatic OpenAPI documentation.</p>
+            </div>
+            <div>
+                <i class="fas fa-cloud-upload-alt"></i>
+                <h2>AWS Cloud</h2>
+                <p>Certified track: EC2, S3, VPC, IAM, CloudWatch, cost optimization. Building highly available and fault-tolerant architectures.</p>
+            </div>
+            <div>
+                <i class="fab fa-docker"></i>
+                <h2>Docker Containers</h2>
+                <p>Containerization of applications, Dockerfile optimization, multi-stage builds, Docker Compose for local development environments.</p>
+            </div>
+            <div>
+                <i class="fas fa-cubes"></i>
+                <h2>Kubernetes Orchestration</h2>
+                <p>Pod management, deployments, services, ingress controllers, scaling applications, and cluster orchestration fundamentals.</p>
+            </div>
+            <div>
+                <i class="fas fa-code-branch"></i>
+                <h2>CI/CD & Automation</h2>
+                <p>GitHub Actions, automated testing, deployment pipelines. Infrastructure automation using shell scripting and YAML.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Certifications & Projects Portfolio -->
+<div id="projects">
+    <div class="container">
+        <h1 class="sub-title"><i class="fas fa-award"></i> Certifications & Milestones</h1>
+        <div class="projects-grid">
+            <div class="project-card"><h3><i class="fab fa-aws"></i> AWS Certified Cloud Practitioner</h3><p>Foundational AWS certification validating cloud concepts, security, pricing, and architecture best practices.</p><a class="cert-link" href="#" target="_blank"><i class="fas fa-external-link-alt"></i> View credential →</a></div>
+            <div class="project-card"><h3><i class="fab fa-python"></i> Python Certification</h3><p>Advanced programming, data structures, and problem-solving mastery.</p><a class="cert-link" href="https://drive.google.com/file/d/1f7J9Kq7arRrI5skpBaHTSj_PAbbQ5tgN/view?usp=sharing" target="_blank"><i class="fas fa-external-link-alt"></i> View credential →</a></div>
+            <div class="project-card"><h3><i class="fas fa-code"></i> CPP Essentials (C++ Institute)</h3><p>Object-oriented programming, memory management, algorithms.</p><a class="cert-link" href="https://drive.google.com/file/d/1_W60mQz7Q6JPHyO7rBpqbdZ_j1Uq5C4H/view?usp=sharing" target="_blank"><i class="fas fa-certificate"></i> View credential →</a></div>
+            <div class="project-card"><h3><i class="fab fa-aws"></i> AWS Cloud Foundations</h3><p>Core AWS services, cloud economics, security fundamentals.</p><a class="cert-link" href="https://drive.google.com/file/d/1LcQTQuBRev2f59lzCZfnAGVpdXNhTNIe/view?usp=sharing" target="_blank"><i class="fas fa-cloud-upload-alt"></i> View credential →</a></div>
+            <div class="project-card"><h3><i class="fab fa-aws"></i> AWS Cloud Architecting</h3><p>Designing resilient, high-performing cloud solutions.</p><a class="cert-link" href="https://drive.google.com/file/d/1jbyroPQLbRnn57YbGSwL3sxmbyBT_77m/view?usp=sharing" target="_blank"><i class="fas fa-archway"></i> View credential →</a></div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact & Networking -->
+<div id="contact">
+    <div class="container">
+        <div class="contact-row">
+            <div class="contact-left">
+                <h1 class="sub-title"><i class="fas fa-envelope"></i> Connect With Me</h1>
+                <p><i class="fas fa-paper-plane"></i> sarthakmatte1221@gmail.com</p>
+                <p><i class="fas fa-phone-alt"></i> +91 89750 80365</p>
+                <div class="social-icons">
+                    <a href="https://instagram.com/sarthakmatte?igshid=MzNlNGNkZWQ4Mg==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.twitter.com/realsrthk" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/sarthakmatte1221" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="contact-right">
+                <form id="contactForm">
+                    <input type="text" name="Name" placeholder="Full name" required>
+                    <input type="email" name="E-mail" placeholder="Email address" required>
+                    <textarea name="Message" rows="5" placeholder="Project inquiry, collaboration, or opportunity..."></textarea>
+                    <button type="submit" class="button"><i class="fas fa-paper-plane"></i> Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>© 2025 Sarthak Matte — Professional Cloud Portfolio | <span class="inline-code"><i class="fas fa-terminal"></i> pipeline: production-ready</span></p>
+    </div>
+</div>
+
+<script>
+    // Advanced Tab switching with detailed logic
+    const tabLinks = document.querySelectorAll('.tab-links');
+    const tabContents = document.querySelectorAll('.tab-contents');
+    function activateTab(tabId) {
+        tabContents.forEach(content => content.classList.remove('active-tab'));
+        tabLinks.forEach(link => link.classList.remove('active-link'));
+        const selectedContent = document.getElementById(tabId);
+        if (selectedContent) selectedContent.classList.add('active-tab');
+        const activeLink = Array.from(tabLinks).find(link => link.getAttribute('data-tab') === tabId);
+        if (activeLink) activeLink.classList.add('active-link');
+    }
+    tabLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const tid = link.getAttribute('data-tab');
+            if (tid) activateTab(tid);
+        });
+    });
+    if (document.querySelector('.tab-links.active-link')) {
+        const defaultTab = document.querySelector('.tab-links.active-link').getAttribute('data-tab');
+        if (defaultTab) activateTab(defaultTab);
+    } else activateTab('skills');
+
+    // Contact form handler with professional alert
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nameField = contactForm.querySelector('input[name="Name"]');
+            if (nameField.value.trim() === "") {
+                alert("Please provide your name to proceed.");
+                nameField.focus();
+                return;
+            }
+            alert(`✓ Message received, ${nameField.value.trim()}. I'll respond within 48 hours.`);
+            contactForm.reset();
+        });
+    }
+
+    // Smooth scroll for navigation with enhanced behavior
+    document.querySelectorAll('.nav-links a, .logo a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId && targetId !== "#" && targetId.startsWith("#")) {
+                e.preventDefault();
+                const targetElem = document.querySelector(targetId);
+                if (targetElem) {
+                    targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.pushState(null, null, targetId);
+                }
+            }
+        });
+    });
+    // Additional safe handling for internal anchors
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            if (this.getAttribute('href') === "#") return;
+            const elem = document.querySelector(this.getAttribute('href'));
+            if (elem && this.closest('.navbar')) {
+                e.preventDefault();
+                elem.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+</body>
+</html>
